@@ -1,0 +1,23 @@
+{
+  "name": "cloud-security-training-dashboard-backend",
+  "version": "1.0.0",
+  "description": "Backend for the Cloud Security Training Dashboard",
+  "main": "src/app.js",
+  "scripts": {
+    "start": "node src/app.js",
+    "dev": "nodemon src/app.js"
+  },
+  "dependencies": {
+    "dotenv": "^8.2.0",
+    "express": "^4.21.2",
+    "mongoose": "^8.9.5",
+    "path": "^0.12.7",
+    "serve-static": "^1.16.2"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.4"
+  },
+  "author": "King Tre",
+  "license": "MIT",
+  "keywords": []
+}
