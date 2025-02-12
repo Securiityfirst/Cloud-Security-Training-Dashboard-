@@ -1,20 +1,24 @@
-const express = require('express');
-const path = require('path');
-const app = express();
+var express = require('express');
 const port = 3000;
+const path = require('path');
+var app = express();
 const routes = require('./routes');
 
 app.use(express.json());
 app.use('/api', routes);
 
-// Serve static files from the React app
-app.use(express.static(path.join(__dirname, '../../frontend/build')));
-
-// The "catchall" handler: for any request that doesn't match one above, send back React's index.html file.
-app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, '../../frontend/build', 'index.html'));
+// set up rate limiter: maximum of five requests per minute
+var RateLimit = require('express-rate-limit');
+var limiter = RateLimit({
+  windowMs: 15 * 60 * 1000, // 15 minutes
+  max: 100, // max 100 requests per windowMs
 });
 
-app.listen(port, () => {
-  console.log(`Server is running on http://localhost:${port}`);
+// apply rate limiter to all requests
+app.use(limiter);
+
+app.get('/:path', function(req, res) {
+  let path = req.params.path;
+  if (isValidPath(path))
+    res.sendFile(path);
 });
