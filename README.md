@@ -55,13 +55,13 @@ cloud-security-training-dashboard
 2. Navigate to the backend directory and install dependencies:
    ```
    cd cloud-security-training-dashboard/backend
-   npm install
+    pip npm install
    ```
 
 3. Navigate to the frontend directory and install dependencies:
    ```
    cd ../frontend
-   npm install
+   pip npm install
    ```
 
 ### Running the Application
@@ -69,13 +69,13 @@ cloud-security-training-dashboard
 1. Start the backend server:
    ```
    cd backend
-   npm start
+    pip npm start
    ```
 
 2. Start the frontend application:
    ```
    cd ../frontend
-   npm start
+   pip npm start
    ```
 
 ### Project Goals
