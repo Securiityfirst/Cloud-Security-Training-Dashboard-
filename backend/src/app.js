@@ -17,8 +17,14 @@ var limiter = RateLimit({
 // apply rate limiter to all requests
 app.use(limiter);
 
+const SAFE_ROOT = path.join(__dirname, 'public');
+
 app.get('/:path', function(req, res) {
-  let path = req.params.path;
-  if (isValidPath(path))
-    res.sendFile(path);
+  let userPath = req.params.path;
+  let resolvedPath = path.resolve(SAFE_ROOT, userPath);
+  if (resolvedPath.startsWith(SAFE_ROOT)) {
+    res.sendFile(resolvedPath);
+  } else {
+    res.status(403).send('Access denied');
+  }
 });
