@@ -2,7 +2,7 @@
   "name": "cloud-security-training-dashboard-backend",
   "version": "1.0.0",
   "description": "Backend for the Cloud Security Training Dashboard",
-  "main": "./src/app.js",
+  "test": "./src/app.js",
   "scripts": {
     "start": "node ./src/app.js",
     "dev": "nodemon ./src/app.js"
