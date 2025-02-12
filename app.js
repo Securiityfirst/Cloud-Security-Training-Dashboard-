@@ -1,24 +1,24 @@
-import React from 'react';
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
-import Navbar from './components/Navbar';
-import Dashboard from './pages/Dashboard';
-import TrainingModule from './pages/TrainingModule';
-import UserProfile from './pages/UserProfile';
-import './styles/index.css';
+var express = require('express');
+const port = 3000;
+const SAFE_ROOT = path.join(__dirname, 'public');
+var app = express();
+const routes = require('./routes');
 
-const App = () => {
-  return (
-    <Router>
-      <div className="App">
-        <Navbar />
-        <Switch>
-          <Route path="/" exact component={Dashboard} />
-          <Route path="/module/:id" component={TrainingModule} />
-          <Route path="/profile" component={UserProfile} />
-        </Switch>
-      </div>
-    </Router>
-  );
-};
+app.use(express.json());
+app.use('/api', routes);
 
-export default App;
+// set up rate limiter: maximum of five requests per minute
+var RateLimit = require('express-rate-limit');
+var limiter = RateLimit({
+  windowMs: 15 * 60 * 1000, // 15 minutes
+  max: 100, // max 100 requests per windowMs
+});
+
+// apply rate limiter to all requests
+app.use(limiter);
+
+app.get('/:path', function(req, res) {
+let resolvedPath = path.resolve(SAFE_ROOT, userPath);
+  if (resolvedPath.startsWith(SAFE_ROOT)); 
+   res.sendFile(path);
+});
