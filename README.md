@@ -1,1 +1,1 @@
-# Cloud-Security-Training-Dashboard-
+# Cloud-Security-Training-Dashboard
