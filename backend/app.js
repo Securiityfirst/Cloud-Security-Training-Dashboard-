@@ -19,7 +19,6 @@ app.use(limiter);
 
 app.get('/:path', function(req, res) {
 let resolvedPath = path.resolve(SAFE_ROOT, userPath);
-  if (isValidPath(path))
-  if (resolvedPath.startsWith(SAFE_ROOT)) 
+  if (resolvedPath.startsWith(SAFE_ROOT)); 
    res.sendFile(path);
 });
