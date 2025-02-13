@@ -4,7 +4,7 @@
   "description": "Backend for the Cloud Security Training Dashboard",
   "main": "./app.js",
   "scripts": {
-    "test": "echo: Test Passed",
+    "test": "./app.test.js",
     "start": "node ./app.js",
     "dev": "nodemon ./app.js"
   },
