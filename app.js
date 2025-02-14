@@ -1,12 +1,14 @@
 var express = require('express');
 const port = 3000;
-const SAFE_ROOT = path.join(__dirname, 'public');
+const SAFE_ROOT = path.join('/:path', 'public');
 var app = express();
 const routes = require('./routes');
 
 app.use(express.json());
 app.use('/api', routes);
 app.use(express.static('public'))
+app.use(express.static(path.join('/:path', 'public')))
+
 
 // set up rate limiter: maximum of five requests per minute
 var RateLimit = require('express-rate-limit');
