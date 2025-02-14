@@ -6,6 +6,7 @@ const routes = require('./routes');
 
 app.use(express.json());
 app.use('/api', routes);
+app.use(express.static('public'))
 
 // set up rate limiter: maximum of five requests per minute
 var RateLimit = require('express-rate-limit');
