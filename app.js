@@ -1,6 +1,5 @@
 var express = require('express');
 const port = 3000;
-const SAFE_ROOT = path.join('/:path', 'public');
 var app = express();
 const routes = require('./routes');
 
@@ -20,7 +19,8 @@ var limiter = RateLimit({
 // apply rate limiter to all requests
 app.use(limiter);
 
-app.get('/:path', function(req, res) {
+const SAFE_ROOT = path.join('./', 'public');
+app.get('./:path', function(req, res) {
 let resolvedPath = path.resolve(SAFE_ROOT, userPath);
   if (resolvedPath.startsWith(SAFE_ROOT)); 
    res.sendFile(path);
